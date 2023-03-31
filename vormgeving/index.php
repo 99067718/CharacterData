@@ -7,10 +7,7 @@
     <link href="resources/css/style.css" rel="stylesheet"/>
 </head>
 <body>
-<header><h1>Alle [X] characters uit de database</h1>
 
-</header>
-<div id="container">
 <?php
 $servername = "localhost";
 $username = "root";
@@ -26,6 +23,14 @@ if ($conn->connect_error) {
 
 $sql = "SELECT * FROM characters";
 $result = $conn->query($sql);
+$count = mysqli_num_rows( $result );
+
+?>
+<header><h1>Alle <?php echo($count) ?> characters uit de database</h1>
+
+</header>
+<div id="container">
+    <?php
 
 if ($result->num_rows > 0) {
   // output data of each row
